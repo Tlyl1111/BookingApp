@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listen to Smart Contract Events</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.0.2/web3.min.js"></script>
+</head>
+<body>
+  <h2>Danh Sách Phòng</h2>
+  <button onclick="filterRooms('Meeting Room')">Meeting Room</button>
+  <button onclick="filterRooms('Work Room')">Work Room</button>
+  <button onclick="filterRooms('')">All Rooms</button>
+  
+  <div id="roomList"></div>
+  <!--
+  <hr />
+
+  <h3>Thêm Phòng Mới</h3>
+  <form id="addRoomForm">
+    <label for="name">Room Name:</label><br />
+    <input type="text" id="name" name="name" required /><br /><br />
+
+    <label for="location">Location:</label><br />
+    <input type="text" id="location" name="location" required /><br /><br />
+
+    <label for="roomLength">Room Length (meters):</label><br />
+    <input type="number" id="roomLength" name="roomLength" required /><br /><br />
+
+    <label for="pricePerHour">Price per Hour:</label><br />
+    <input type="number" id="pricePerHour" name="pricePerHour" required /><br /><br />
+
+    <label for="roomType">Room Type:</label><br />
+    <input type="text" id="roomType" name="roomType" required /><br /><br />
+
+    <button type="button" onclick="addRoom()">Add Room</button>
+  </form>
+
+  <hr />!-->
+
+  <div id="formContainer"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/filterroom.js"></script>
+</body>
+</html>

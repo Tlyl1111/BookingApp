@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listen to Smart Contract Events</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.0.2/web3.min.js"></script>
+  </head>
+
+  <body>
+    <h2>Smart Contract Event Listener</h2>
+    <form id="signalForm">
+      <input
+        type="text"
+        id="signalName"
+        placeholder="Tên signal"
+        required
+      /><br />
+      <textarea
+        id="signalDescription"
+        placeholder="Mô tả signal"
+        required
+      ></textarea><br />
+      <button type="submit">Thêm Signal</button>
+    </form>
+    <button id="getSignalsButton">Get Signal</button>
+    <button id="getBTCFlowButton">Get BTC Flow</button>
+    <button id="getBTCFlowByTimeButton">Get BTC Flow By Time</button>
+    <h2>Signal List</h2>
+    <div id="signalsContainer"></div>
+    <h2>BTC Flow List</h2>
+    <div id="btcFlowContainer"></div>
+    <h2>BTC Flow By Time</h2>
+    <div id="btcFlowByTimeContainer"></div>
+    <div id="events"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
