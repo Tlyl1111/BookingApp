@@ -19,9 +19,6 @@ contract Booking is Room {
     mapping(uint256 => BookingInfo) public bookings;
     uint256 public nextBookingId = 1;
 
-    // Mapping để theo dõi các booking của từng tài khoản người dùng
-    mapping(address => uint256[]) public userBookings;
-
     event BookingInitialized(uint256 bookingId, uint256 roomId, address user);
     event RoomBooked(uint256 bookingId, uint256 roomId, address user, uint256 totalPrice);
     event DebugLog(uint256 year, uint256 month, uint256 day, uint256 hour, uint256 minute);
@@ -82,6 +79,7 @@ contract Booking is Room {
         onlyAvailable(_roomId)
         returns (uint256)
     {
+        //uint256 startTime = parseTimeToUint(_startTimestamp);
         emit Log(_startTimestamp, block.timestamp);
 
         RoomInfo storage room = rooms[_roomId];
@@ -105,9 +103,6 @@ contract Booking is Room {
             isCancel: false
         });
 
-        // Lưu booking của người dùng vào mapping
-        userBookings[msg.sender].push(bookingId);
-
         bool isMeetingRoom = checkTypeRoom(_roomId);
         if (isMeetingRoom) {
             bookings[bookingId].isCompleted = true;
@@ -122,18 +117,6 @@ contract Booking is Room {
         emit BookingInitialized(bookingId, _roomId, msg.sender);
 
         return bookingId;
-    }
-
-    // Hàm này sẽ trả về tất cả các booking của người dùng
-    function getUserBookings() public view returns (BookingInfo[] memory) {
-        uint256[] storage bookingIds = userBookings[msg.sender];
-        BookingInfo[] memory userBookingInfo = new BookingInfo[](bookingIds.length);
-
-        for (uint256 i = 0; i < bookingIds.length; i++) {
-            userBookingInfo[i] = bookings[bookingIds[i]];
-        }
-
-        return userBookingInfo;
     }
 
     function completeBooking(uint256 _bookingId, uint256[] memory _seatIds) public payable {
